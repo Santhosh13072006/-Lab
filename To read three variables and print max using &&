@@ -1,0 +1,19 @@
+#include<stdio.h>
+int main()
+{
+    int a,b,c,result;
+    printf("enter a:");
+    scanf("%d",&a);
+    printf("enter b:");
+    scanf("%d",&b);
+    printf("enter c:");
+    scanf("%d",&c);
+    result= ((a>b)&&(a>c));
+    printf("a max=%d\t",result);
+    result=((b>c)&&(b>a));
+    printf("b max=%d\t",result);
+     result=((c>a)&&(c>b));
+    printf("c max=%d\t",result);
+    return 0;
+}
+    
