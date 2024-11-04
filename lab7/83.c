@@ -1,7 +1,7 @@
 // Online C compiler to run C program online
 #include<stdio.h>
 #include<math.h>
-float function(int x)
+int function(int x)
 {
     int s[x],i,j,a,d;
     
