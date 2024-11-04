@@ -1,6 +1,6 @@
 #include<stdio.h>
 #include<math.h>
-int function(int x)
+void function(int x)
 {
     int a=0,b=1,c,i=2;
     if(x==1)
