@@ -1,6 +1,6 @@
 #include<stdio.h>
 #include<math.h>
-int function(int x,int y)
+void function(int x,int y)
 {
    int c;
    c=x+y;
@@ -8,7 +8,7 @@ int function(int x,int y)
    printf("%d\n",x);
    y=c-y;
    printf("%d\n",y);
-    return (x,y);
+    
 }
 
 int main()
