@@ -23,7 +23,7 @@ int main()
         printf("error opening file for writing");
         return 1;
     }
-    while((c=getchar())!='\0')
+    while((c=getchar())!=EOF)
     {
         putc(c,fp);
         
