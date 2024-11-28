@@ -18,7 +18,7 @@ int main()
     printf("roll number ,name,total marks\n");
     for(i=0;i<n;i++)
     {
-        scanf("%d%s%d",&a[i].roll,&a[i].s,&a[i].t);
+        scanf("%d%s%d",&a[i].roll,a[i].s,&a[i].t);
     }
     FILE *fp;
     fp=fopen("LNMIITSTUDENT.JAVA","w");
