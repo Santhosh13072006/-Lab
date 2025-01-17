@@ -1,0 +1,21 @@
+
+#include <stdio.h>
+int main()
+{   int n,k;
+    float i;
+    printf("enter no of calls made by customer:");
+    scanf("%d",&n);
+    if(n>100)
+    {
+        i=250+((n-100)*1.25);
+        printf("bill to be paid by customer %f",i);
+    }
+    else
+    {
+        k=250;
+        printf("bill to be paid by customer %d",k);
+    }
+
+
+    return 0;
+}
