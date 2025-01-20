@@ -1,0 +1,29 @@
+#include <stdio.h>
+#include<stdlib.h>
+typedef struct node
+{
+     int data;
+     struct node *next;
+}d;
+int main()
+{
+    int a,b,c;
+    printf("enter three numbers saperated by a space\n");
+    scanf("%d%d%d",&a,&b,&c);
+    d *first=(d*)malloc(sizeof(d));
+    first->data=a;
+    d *second=(d*)malloc(sizeof(d));
+    second->data=b;
+    first->next=second;
+    d *third=(d*)malloc(sizeof(d));
+    third->data=c;
+    second->next=third;
+    printf("linked list\n");
+    d* head=first;
+    while (head!=NULL)
+    {
+        printf("%d ",head->data);
+        head=head->next;
+    }
+    return 0;
+}   
