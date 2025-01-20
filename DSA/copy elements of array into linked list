@@ -1,0 +1,42 @@
+#include <stdio.h>
+#include <stdlib.h>
+typedef struct node
+{
+     int data;
+     struct node *next;
+}a;
+void insert(a** head,int data_1)
+{
+    a* newnode=(a*)malloc(sizeof(a));
+    newnode->data=data_1;
+    newnode->next=*head;
+    *head=newnode;
+    
+    
+}
+int main()
+{
+    int n;
+    printf("enter number of elements in our array:");
+    scanf("%d",&n);
+    int b[n];
+    a* head=NULL;
+    printf("enter elements of array one by one:");
+    for(int i=0;i<n;i++)
+    {
+       scanf("%d",&b[i]); 
+        
+    }
+    for(int i=0;i<n;i++)
+    {
+       insert(&head,b[n-1-i]); 
+        
+    }
+    
+    while(head!=NULL)
+    {
+        printf("%d ",head->data);
+        head=head->next;
+    }
+}
+
