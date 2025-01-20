@@ -1,0 +1,40 @@
+#include <stdio.h>
+#include<stdlib.h>
+typedef struct node
+{
+     int data;
+     struct node *next;
+}d;
+void push(d** head,int data_1)
+{
+    d* newnode=(d*)malloc(sizeof(d));
+    newnode->data=data_1;
+    newnode->next=*head;
+    *head=newnode;
+    
+}
+int main()
+{
+    int a,b,c,e;
+    printf("enter three numbers saperated by a space\n");
+    scanf("%d%d%d",&a,&b,&c);
+    d *first=(d*)malloc(sizeof(d));
+    first->data=a;
+    d *second=(d*)malloc(sizeof(d));
+    second->data=b;
+    first->next=second;
+    d *third=(d*)malloc(sizeof(d));
+    third->data=c;
+    second->next=third;
+    printf("linked list\n");
+    d* head=first;
+    printf("enter which number to be added at first:");
+    scanf("%d",&e);
+    push(&head,e);
+    while (head!=NULL)
+    {
+        printf("%d ",head->data);
+        head=head->next;
+    }
+    return 0;
+}   
