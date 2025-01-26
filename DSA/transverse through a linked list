@@ -1,0 +1,51 @@
+#include <stdio.h>
+#include<stdlib.h>
+typedef struct node
+{
+     int data;
+     struct node *next;
+}d;
+d* create(int data1)
+{
+    d* newnode=(d*)malloc(sizeof(d));
+    newnode->next=NULL;
+    newnode->data=data1;
+    return (newnode);
+}
+void insert(d** head,int data1)
+{
+    d* newnode=create(data1);
+    {
+        if(*head==NULL)
+        {
+            *head=newnode;
+        }
+        else
+        {
+            d* temp=*head;
+            while(temp->next!=NULL)
+            {
+                temp=temp->next;
+            }
+            temp->next=newnode;
+        }
+    }
+}
+int main()
+{
+    d* head=NULL;
+    
+    insert(&head,10);
+    insert(&head,20);
+    insert(&head,30);
+    insert(&head,40);
+    d* temp=head;
+    int a[100],i=0;
+    while (temp!=NULL)
+    {
+        printf("%d ",temp->data);
+        temp=temp->next;
+    }
+
+    return 0;
+}   
