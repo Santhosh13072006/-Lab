@@ -1,0 +1,82 @@
+#include <stdio.h>
+#include <stdlib.h>
+typedef struct node
+{
+    int data;
+    struct node *next;
+}a;
+a* create(int data1)
+{
+    a*newnode=(a*)malloc(sizeof(a));
+    newnode->data=data1;
+    newnode->next=NULL;
+    return newnode;
+}
+void at_the_back(a** head,int data1)
+{
+    a* newnode=create(data1);
+    if(*head==NULL)
+    {
+        *head=newnode;
+    }
+    else
+    {
+        a* temp=*head;
+     while(temp->next!=NULL)
+     {
+         temp=temp->next;
+     }
+     temp->next=newnode;
+    }
+    
+}
+void circular(a* head)
+{
+    if(head==NULL)
+    return;
+    else
+    {
+        a* temp=head;
+        while(temp->next!=NULL)
+        {
+            temp=temp->next;
+        }
+        temp->next=head;
+    }
+}
+
+int main()
+{
+    a* head=NULL;
+    int n,k;
+    printf("enter number of elements in our array:");
+    scanf("%d",&n);
+    int b[n];
+    printf("enter elements of array one by one :");
+    for(int i=0;i<n;i++)
+    {
+        scanf("%d",&b[i]);
+    }
+    for(int i=0;i<n;i++)
+    {
+         at_the_back(&head,b[i]);
+    }
+    circular(head);
+    a* temp1=head;
+     printf("enter number of positions to be rotated:");
+     scanf("%d",&k);
+     k=k%n;
+     for(int i=0;i<k;i++)
+     {
+         temp1=temp1->next;
+     }
+     a* temp2=temp1;
+     do
+     {
+         printf("%d->",temp1->data);
+         temp1=temp1->next;
+     }while(temp1!=temp2);
+     
+     
+    
+}
