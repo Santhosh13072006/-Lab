@@ -1,0 +1,108 @@
+#include <stdio.h>
+#include <stdlib.h>
+typedef struct node
+{
+    int data;
+    struct node *next;
+    struct node *prev;
+}a;
+a* create(int data1)
+{
+    a* newnode=(a*)malloc(sizeof(a));
+    newnode->data=data1;
+    newnode->next=NULL;
+    newnode->prev=NULL;
+    return newnode;
+}
+ void insertAtBegin(a** head,int data1)
+{
+    a* newnode=create(data1);
+    if(*head==NULL)
+    {
+      *head=newnode;
+       newnode->prev=NULL;
+    }
+    else
+    {
+        newnode->next=*head;
+        a* temp=*head;
+        temp->prev=newnode;
+        *head=newnode;
+        
+        
+    }
+}
+void insertspecific(a** head,int data1,int num,int nodenum)
+{      if(nodenum==0)
+        {
+         a* newnode=create(data1);
+         a* temp=*head;
+         temp->prev=newnode;
+         newnode->next=temp;
+         *head=newnode;
+         
+        }
+        else if(nodenum==num+1)
+        {
+        a* newnode=create(data1);
+        a* temp=*head;
+        while(temp->next!=NULL)
+        {
+            temp=temp->next;
+        }
+         temp->next=newnode;
+         newnode->prev=temp;
+        }
+        else{
+
+        int c=0;
+        a* temp=*head;
+        while(temp!=NULL)
+        {
+            temp=temp->next;
+            c=c+1;
+            if(c==nodenum-1)
+            {
+                break;
+            }
+        }
+        a* newnode=create(data1);
+        a* temp2=temp->next;
+        temp->next=newnode;
+        newnode->next=temp2;
+        temp2->prev=newnode;
+        newnode->prev=temp;
+        }
+   
+}
+int main()
+{
+    int n;
+    a* head=NULL;
+    printf("enter no.of elements in your array:");
+    scanf("%d",&n);
+    int b[n];
+    for(int i=0;i<n;i++)
+    {
+        scanf("%d",&b[i]);
+    }
+    for(int i=0;i<n;i++)
+    {
+        insertAtBegin(&head,b[i]);
+    }
+    int c,d;
+    printf("enter the value of integer to be inserted:");
+    scanf("%d",&c);
+    printf("after which this should be insert from 0 to %d:",n+1);
+    scanf("%d",&d);
+    insertspecific(&head,c,n,d);
+    while(head!=NULL)
+    {
+        printf("%d ",head->data);
+        head=head->next;
+    }
+    
+    
+    
+    
+}
