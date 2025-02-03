@@ -95,7 +95,7 @@ void insertspecific(a** head,int data1,int num,int nodenum)
 }
 void insertAtMiddle(a** head,int data1,int num)
 {
-        int k=num/2-1,c=0;
+        int k=num/2,c=0;
         a* temp=*head;
         while(temp!=NULL)
         {
