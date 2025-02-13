@@ -1,0 +1,44 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main() 
+{
+    int n,m;
+    cout<<"enter numbersof rows and columns"<<endl;
+    cin>>n;
+    cin>>m;
+    int a[n][m];
+    int count=0;
+    for(int i=0;i<n;i++)
+    {
+        for(int j=0;j<m;j++)
+        {
+            cin>>a[i][j];
+            if(a[i][j]!=0)
+            {
+               count=count+1;
+            }
+        }
+    }
+    int b[count][3],k=0;
+    for(int i=0;i<n;i++)
+    {
+        for(int j=0;j<m;j++)
+        {
+            if(a[i][j]!=0)
+            {
+                b[k][0]=i;
+                b[k][1]=j;
+                b[k][2]=a[i][j];
+                k=k+1;
+            }
+        }
+    }
+    for(int i=0;i<count;i++)
+    {
+        cout<<b[i][0]<<" "<<b[i][1]<<" "<<b[i][2];
+        cout<<"\n";
+    }
+    
+    
+    return 0;
+}
