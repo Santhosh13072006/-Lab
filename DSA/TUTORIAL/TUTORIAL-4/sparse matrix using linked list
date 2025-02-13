@@ -1,0 +1,72 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef struct node
+{
+    int row;
+    int column;
+    int data;
+    struct node* next;
+}node;
+class LinkedList
+{
+    private:
+       node* head=NULL;
+    
+    public:
+    
+        void add_at_back(int row1,int column1,int data1)
+        {
+            node* newnode=new(node);
+            newnode->row=row1;
+            newnode->column=column1;
+            newnode->data=data1;
+            newnode->next=NULL;
+            if(head==NULL)
+            {
+                head=newnode;
+                return;
+            }
+            node* temp=head;
+            while(temp->next!=NULL)
+            {
+                temp=temp->next;
+            }
+            temp->next=newnode;
+            return;
+            
+        }
+        void display()
+        {
+            node* temp=head;
+            while(temp!=NULL)
+            {
+                cout<<temp->row<<" "<<temp->column<<" "<<temp->data<<endl;
+                temp=temp->next;
+            }
+        }
+};
+    
+int main() 
+{
+    int n,m;
+    cout<<"enter numbersof rows and columns"<<endl;
+    cin>>n;
+    cin>>m;
+    vector<vector<int>>a(n,vector<int>(m));
+    LinkedList sparse_matrix;
+    for(int i=0;i<n;i++)
+    {
+        for(int j=0;j<m;j++)
+        {
+            cin>>a[i][j];
+            if(a[i][j]!=0)
+            {
+               sparse_matrix.add_at_back(i,j,a[i][j]);
+            }
+        }
+    }
+    sparse_matrix.display();
+    
+    
+    return 0;
+}
