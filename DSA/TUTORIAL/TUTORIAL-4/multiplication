@@ -1,0 +1,115 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef struct node
+{
+    int power;
+    int coeff;
+    struct node* next;
+}node;
+class LinkedList
+{
+    private:
+       node* head=NULL;
+    
+    public:
+        void create(int power1,int coeff1)
+        {
+            node* newnode=new(node);
+            newnode->power=power1;
+            newnode->coeff=coeff1;
+            newnode->next=NULL;
+            node* temp=head;
+            if(head==NULL)
+            {
+                head=newnode;
+                return;
+            }
+            while(temp->next!=NULL)
+            {   
+                temp=temp->next;
+            }
+            
+            temp->next=newnode;
+            return;
+        }
+            
+    
+        void add(int power1,int coeff1)
+        {
+            node* temp=head;
+            if(head==NULL)
+            {
+                
+                node* newnode=new(node);
+                newnode->power=power1;
+                newnode->coeff=coeff1;
+                newnode->next=NULL;
+                head=newnode;
+                return;
+            }
+            while(temp->next!=NULL)
+            {   
+                if(temp->power==power1)
+                {
+                    temp->coeff=temp->coeff+coeff1;
+                    return;
+                }
+                
+                temp=temp->next;
+            }
+            node* temp1=head;
+            node* prev=head;
+            while(temp1->power>power1)
+            {   
+                
+                temp1=temp1->next;
+                prev=temp1;
+            }
+            node* newnode=new(node);
+            newnode->power=power1;
+            newnode->coeff=coeff1;
+            newnode->next=NULL;
+            if(prev==head)
+            {
+             newnode->next=head;
+             head=newnode;
+             return;
+            }
+            if(temp1->next!=NULL)
+            {
+                prev->next=newnode;
+                newnode->next=temp1;
+                return;
+            }
+            else
+            {
+                temp1->next=newnode;
+            }
+        }
+        
+        void display()
+        {
+            node* temp=head;
+            while(temp!=NULL)
+            {
+                cout<<temp->power<<" "<<temp->coeff<<" "<<endl;
+                temp=temp->next;
+            }
+        }
+};
+    
+int main() 
+{
+    LinkedList one;
+    one.create(2,3);
+    one.create(1,4);
+    one.create(0,7);
+    LinkedList two;
+    two.create(1,1);
+    two.create(0,3);
+    LinkedList three;
+     
+    
+    
+    return 0;
+}
