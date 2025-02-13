@@ -6,7 +6,7 @@ int main()
     cout<<"enter numbersof rows and columns"<<endl;
     cin>>n;
     cin>>m;
-    int a[n][m];
+    vector<vector<int>>a(n,vector<int>(m));
     int count=0;
     for(int i=0;i<n;i++)
     {
@@ -19,17 +19,14 @@ int main()
             }
         }
     }
-    int b[count][3],k=0;
+    vector<vector<int>>b;
     for(int i=0;i<n;i++)
     {
         for(int j=0;j<m;j++)
         {
             if(a[i][j]!=0)
             {
-                b[k][0]=i;
-                b[k][1]=j;
-                b[k][2]=a[i][j];
-                k=k+1;
+                b.push_back({i,j,a[i][j]});
             }
         }
     }
