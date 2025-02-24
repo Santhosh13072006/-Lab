@@ -1,0 +1,96 @@
+#define MAXSIZE 100
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+#include<ctype.h>
+
+typedef struct stack{
+    int data;
+    struct stack *next;
+}stack;
+int isempty(stack **top){
+    if(*top==NULL){
+        return 1;
+        exit(1);
+    }
+    else{
+        return 0;
+    }
+ }
+void create (stack **top){
+   *top=NULL;
+}
+void push(stack **top,int num){
+    stack *node=(stack*)malloc(sizeof(stack));
+    node->data=num;
+    node->next=*top;
+    *top=node;
+}
+int pop(stack **top){
+    if(isempty(top)){
+        printf("empty list so not possible");
+        exit(1);
+    }
+    int x=(*top)->data;
+    stack *temp=*top;
+    *top=(*top)->next;
+    free(temp);
+    return x;
+}
+int  peek(stack **top){
+    int x=(*top)->data;
+    return x;
+}
+char isoperator(char c){
+    if(c=='*'||c=='+'||c=='-'||c=='%'||c=='/'||c=='^')
+    return c;
+    else
+    return 0;
+}
+int value(int a,int b,char c){
+    if(c=='+'){
+        return a+b;
+    }
+    if(c=='-'){
+        return a-b;
+    }
+    if(c=='*'){
+        return a*b;
+    }
+    if(c=='/'){
+        return a/b;
+    }
+    if(c=='%'){
+        return a%b;
+    }
+    if(c=='^'){
+        return a^b;
+    }
+}
+int main(){
+    stack *top;
+    create(&top);
+    int l;
+    int res=0;
+    char arr[MAXSIZE],c;
+    printf("enter postfix expression");
+    scanf("%s",arr);
+    l=strlen(arr);
+    int i;
+    for(i=0;i<l;i++){
+        c=arr[i];
+        if(isdigit(c)){
+            int a=(int)(c)-48;
+            push(&top,a); 
+        } 
+        else if(isoperator(c)){
+            int a=pop(&top);
+            int b=pop(&top);
+            res=value(a,b,c);
+            push(&top,res);
+        }  
+    }
+    res=peek(&top);
+    printf("%d",res);
+}
+
