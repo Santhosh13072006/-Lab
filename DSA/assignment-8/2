@@ -1,0 +1,153 @@
+#include <stdio.h>
+#include <stdlib.h>
+#define MAX_SIZE 2
+typedef struct s
+{
+    int arr[MAX_SIZE];
+    int front;
+    int rear;
+}b;
+void initialize (b* queue)
+{
+    queue->front=-1;
+    queue->rear=-1;
+}
+void push(b* queue,int data)
+{
+    if(queue->rear==-1)
+    {
+        queue->arr[++(queue->rear)]=data;
+        queue->front=0;
+    }
+    else
+    {
+        if(queue->rear==MAX_SIZE-1)
+        {
+            if(queue->front==0)
+            {
+                printf("queue is full");
+                return ;
+            }
+            else
+            {
+                queue->rear=0;
+                queue->arr[0]=data;
+                
+            }
+        }
+        else
+        {
+            if(queue->front-queue->rear==-1)
+            {
+                printf("queue is full");
+            }
+            queue->arr[++(queue->rear)]=data;
+        }
+    }
+}
+int  pop(b* queue)
+{
+    if(queue->front==-1)
+     {
+         printf(" queue is empty\n");
+        return 0;
+     }
+     else
+     {
+        return (queue->arr[(queue->front)++]);
+     }
+}
+void peek(b* queue)
+{
+    if(queue->front==-1)
+     {
+         printf(" queue is empty\n");
+     }
+     else
+     {
+       printf("top element is %d\n", queue->arr[(queue->rear)]);
+     }
+}
+void isFull(b* queue)
+{
+     if(((queue->front)-(queue->rear)==1) ||((queue->front)-(queue->rear)==MAX_SIZE-1))
+     {
+         printf("queue is full\n");
+     }
+     else
+     {
+        printf("queue is not full\n");
+     }
+}
+void isEmpty(b* queue)
+{
+    if(queue->front==queue->rear)
+     {
+         printf("queue is empty\n");
+     }
+     else
+     {
+        printf("queue is empty\n");
+     }
+}
+int main()
+{   
+    int n=0,c;
+    b queue;
+    initialize(&queue);
+    printf("queue can maximum hold 2 values");
+    printf("\n if you want to do any operation on stack select the following\n");
+    printf("1-push\n2-pop\n3-peek\n4-isfull\n5-isempty\n 0 to exit\n");
+    while(1)
+    {  
+        printf("enter your choice:");
+        scanf("%d",&c);
+        
+        switch(c)
+        {
+            case 1:
+            {
+                int a;
+                printf("enter element to be added\n");
+                scanf("%d",&a);
+                push(&queue,a);
+                break;
+            }
+             case 2:
+            {
+                
+               n= pop(&queue);
+               printf("removed element is %d\n",n);
+                break;
+            }
+             case 3:
+            {
+                
+                peek(&queue);
+                break;
+            }
+             case 4:
+            {
+                
+                isFull(&queue);
+                break;
+            }
+             case 5:
+            {
+                
+                isEmpty(&queue);
+                break;
+            }
+            case 0:
+            {
+                break;
+            }
+        }
+        if(c==0)
+        {
+            break;
+        }
+    }
+
+}
+
